@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Louis Fleury</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap');
+        :root {
+            --font-color : #ccc;
+            --color-one : #8679fc;
+            --color-two : #2473ce;
+            --color-three : #32a39a;
+        }
+        * {
+            scroll-behavior: smooth;
+        }
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: "Special Gothic Condensed One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            background-color: var(--color-one);
+        }
+        header {
+            position: absolute;
+            top: 0;
+            bottom: 90%;
+            right: 0;
+            left: 0%;
+            background-color: var(--color-two);
+            position: fixed;
+        }
+        header h1 {
+            margin-top: 10px;
+            font-size: 2.5em;
+            text-align: center;
+        }
+        header img {
+            position: absolute;
+            top: 2%;
+            left: 5%;
+            width: 80px;
+            border-radius: 50px;
+        }
+        nav {
+            position: fixed;
+            top: 10%;
+            bottom: 0;
+            left: 0;
+            right: 75%;
+            background-color: var(--color-three);
+        }
+        nav ul {
+            padding: 0;
+            margin: 0;
+            margin-top: 10%;
+            list-style-type: none;
+        }
+        nav ul li {
+            padding: 2%;
+            margin: 2%;
+        }
+        nav ul li a {
+            font-size: 1.5em;
+            text-decoration: none;
+            color: var(--font-color);
+            transition: all 0.2s;
+        }
+        nav ul li a:hover {
+            color: #fff;
+        }
+        .content {
+            z-index: -1;
+            position: absolute;
+            top: 10%;
+            bottom: 0;
+            left: 25%;
+            right: 0;
+            font-size: 1.2em;
+        }
+        .content h1 {
+            font-size: 3em;
+            padding-left: 5%;
+        }
+        .content ul {
+            list-style-type: none;
+        }
+        .content ul li {
+            padding-left: 10%;
+        }
+        @media screen and (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            header img {
+                width: 50px;
+                left: 2%; 
+            }
+            nav {
+                right: 50%;
+            }
+            nav ul li a {
+                font-size: 1.2em;
+            }
+            .content {
+                left: 50%;
+                font-size: 1em;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+            nav {
+                display: none; /* Cacher la navigation pour très petits écrans */
+            }
+            .content {
+                left: 5%; /* Utilisation de tout l'espace disponible */
+                right: 5%;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header><h1>Louis Fleury</h1> <img src="assets/photo.jpg" alt="Photo"></header>
+    <nav>
+        <ul>
+            <li>
+                <a href="#experiences">Expériences</a>
+            </li>
+            <li>
+                <a href="#etudes">Etudes</a>
+            </li>
+            <li>
+                <a href="#qualites">Qualités</a>
+            </li>
+            <li>
+                <a href="#informations-complementaires">Informations complémentaires</a>
+            </li>
+            <li>
+                <a href="#centres-interet">Centres d'intérêt</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="content">
+        <h1 id="experiences">Expériences</h1>
+        <ul id="experiences-ul">
+        </ul>
+        <h1 id="etudes">Etudes</h1>
+        <ul id="etudes-ul">
+        </ul>
+        <h1 id="qualites">Qualités</h1>
+        <ul id="qualites-ul">
+        </ul>
+        <h1 id="informations-complementaires">Informations complémentaires</h1>
+        <ul id="informations-ul">
+        </ul>
+        <h1 id="centres-interet">Centres d'intérêt</h1>
+        <ul id="interet-ul">
+        </ul>
+    </div>
+    <script>
+        fetch('assets/cv.json')
+            .then(response => response.json())
+            .then(data => {
+                const experiencesUl = document.getElementById('experiences-ul');
+                for (const [experience, details] of Object.entries(data.experiences)) {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${experience}</strong>: <ul>${details.map(d => `<li>${d}</li>`).join('')}</ul>`;
+                    experiencesUl.appendChild(li);
+                }
+                const etudesUl = document.getElementById('etudes-ul');
+                for (const [etude, details] of Object.entries(data.etudes)) {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${etude}</strong>: <ul>${details.map(d => `<li>${d}</li>`).join('')}</ul>`;
+                    etudesUl.appendChild(li);
+                }
+                const qualitesUl = document.getElementById('qualites-ul');
+                data.qualites.forEach(qualite => {
+                    const li = document.createElement('li');
+                    li.textContent = qualite;
+                    qualitesUl.appendChild(li);
+                });
+                const informationsUl = document.getElementById('informations-ul');
+                for (const [key, value] of Object.entries(data['informations-complementaires'])) {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${key.replace(/-/g, ' ')}:</strong> ${value}`;
+                    informationsUl.appendChild(li);
+                }
+                const interetUl = document.getElementById('interet-ul');
+                data['centres-interet'].forEach(interet => {
+                    const li = document.createElement('li');
+                    li.textContent = interet;
+                    interetUl.appendChild(li);
+                });
+            })
+            .catch(error => {
+                console.error('Erreur lors du chargement du fichier JSON:', error);
+            });
+    </script>
+</body>
+</html>

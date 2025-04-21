@@ -1,0 +1,45 @@
+{
+    "experiences" : {
+        "Assistant administratif à la fondation du CHU Charles Nicole" : [
+            "Traitement de dons et de reçus fiscaux", "Création d’articles sur les avancées technologique médicale"
+        ],
+        "Inscription dans une agence d’hôtes" : [
+            "JG-Models", "Agence d’hôtes et de mannequins dédiée aux grands événement"
+        ],
+        "Evenementiel" : [
+            "Rencontres avec des donateurs", "Bénévolat au collège pour de l’accueil et du service"
+        ],
+        "Actions carritatives" : [
+            "Bénévole pour aider l’association des “Lions club”", "Bénévole à la Fondation “Charles-Nicolle”"
+        ],
+        "Baby-sitting" : [
+            "1 an d'éxperience"
+        ],
+        "Participation à des concours informatiques" : [
+            "Concours internes au lycée", "Premier lors d'un coucours de création de jeu vidéo", "Participation aux Olympiades de NSI"
+        ]
+    },
+    "etudes" : {
+        "Terminale générale" : [
+            "Lycée Blaise Pascal"
+        ],
+        "Spécialités scientifiques" : [
+            "Numérique et Sciences de l'Informatique", "Mathématiques", "Physique Chimie"
+        ],
+        "Etudes supérieures 2024-2025" : [
+            "ELISA, Saint Jean d'Illac", "Ingénerie en aérospatial"
+        ]
+    },
+    "qualites" : [
+        "Sérieux", "Dynamique", "Respectueux", "Bienveillant"
+    ], 
+    "informations-complementaires" : {
+        "date-naissance" : "24 janvier 2006",
+        "telephone" : "06 58 14 29 47",
+        "mail" : "louis.fleury.pr@gmail.com",
+        "domicile" : "Saint Jean d'Illac"
+    },
+    "centres-interet" : [
+        "Musique", "Sport", "Lecture", "Développement informatique", "Voyage", "Dialogue"
+    ]
+}
